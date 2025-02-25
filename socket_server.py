@@ -33,7 +33,7 @@ async def main():
     async with serve(
         handle_events, 
         host="0.0.0.0", 
-        port= 8765, 
+        port= 8080, 
         process_request=process_request,
         ping_interval=30,
         ping_timeout=10,

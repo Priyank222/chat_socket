@@ -1,1 +1,1 @@
-web: python socket_server.py
+web: python3 socket_server.py

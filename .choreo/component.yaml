@@ -2,6 +2,6 @@ schemaVersion: 1.0
 endpoints:
   - name: chat_websocket
     service:
-      port: 8765    # Port exposed to Choreo
-      targetPort: 8765  # Ensure your WebSocket server is listening on this port
+      port: 8080    # Port exposed to Choreo
+      targetPort: 8080  # Ensure your WebSocket server is listening on this port
     type: WS
