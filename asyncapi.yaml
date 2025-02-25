@@ -1,0 +1,61 @@
+asyncapi: '2.6.0'
+info:
+  title: Chat WebSocket API
+  version: '1.0.0'
+  description: |
+    A WebSocket API for chat events. Clients send JSON messages with an event type and data.
+    The server echoes back the received message prefixed with "Echo:".
+servers:
+  production:
+    url: localhost:8765
+    protocol: ws
+    description: Production server for WebSocket connections.
+channels:
+  /:
+    description: The root WebSocket channel for chat events.
+    subscribe:
+      summary: Receives events from clients.
+      operationId: receiveEvent
+      message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            type:
+              type: string
+              description: The event type.
+            data:
+              type: object
+              description: The event data.
+    publish:
+      summary: Sends echo responses back to clients.
+      operationId: sendEcho
+      message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            message:
+              type: string
+              description: The echoed message.
+components:
+  messages:
+    ChatEvent:
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          type:
+            type: string
+            description: The event type.
+          data:
+            type: object
+            description: The event data.
+    EchoMessage:
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          message:
+            type: string
+            description: The echoed message.
